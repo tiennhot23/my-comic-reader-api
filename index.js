@@ -1,5 +1,4 @@
 const express = require('express')
-const PORT = process.env.PORT || 3000
 const chapter = require('./routers/chapter')
 const comic = require('./routers/comic')
 const mongoose = require('mongoose')
@@ -18,4 +17,4 @@ mongoose.connect(process.env.DATABASE_URL, {
 app.use('/api/', comic)
 app.use('/api/chapter', chapter)
 
-app.listen(PORT, console.log("Listening on port: " + `${PORT}`))
+app.listen(process.env.PORT || 3000)
