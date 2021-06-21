@@ -84,6 +84,15 @@ router.get('/search/:query', (req, res,next) => {
     }
 })
 
+
+
+
+router.get('/', (req, res,next) => {
+    res.json({
+        'hello': 'hi!'
+    })
+})
+
 router.post('/', (req, res, next) => {
     const detail_comics = new DetailComics(req.body);
     detail_comics.save().then((detail_comics) => {
