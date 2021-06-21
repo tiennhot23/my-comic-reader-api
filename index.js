@@ -1,14 +1,22 @@
 require('dotenv').config()
 
 const express = require('express')
-const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3000
+const chapter = require('./routers/chapter')
+const comic = require('./routers/comic')
+const mongoose = require('mongoose')
+require('dotenv').config()
 
 const app = express()
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
-const db = mongoose.connection
-db.on('error', (error) => console.log(error))
-db.once('open', () => console.log('connect to db successfully'))
 
+app.use(express.json())
+
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+})
+
+app.use('/api/', comic)
+app.use('/api/chapter', chapter)
 
 app.listen(PORT, console.log("Listening on port: " + `${PORT}`))
