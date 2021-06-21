@@ -6,7 +6,7 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const {MongoClient} = require('mongodb')
 
-router.get('/:chapter_endpoint', async (req, res,next) => {
+router.get('/:chapter_endpoint', (req, res,next) => {
     const chapter_endppint = req.params.chapter_endpoint
     try{
         Chapters.find({'chapter_endpoint': `${chapter_endppint}`}).then((chapters) => {
