@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const Chapters = require('../models/Chapters')
 
-require('dotenv').config()
 
 const mongoose = require('mongoose')
 const {MongoClient} = require('mongodb')

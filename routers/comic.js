@@ -3,8 +3,6 @@ const Genres = require('../models/Genres')
 const Comics = require('../models/Comics')
 const DetailComics = require('../models/DetailComics')
 
-require('dotenv').config()
-
 //genres detail
 router.get('/genres/:genre', (req, res,next) => {
     const genre = req.params.genre
