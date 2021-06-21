@@ -2,7 +2,6 @@ const express = require('express')
 const chapter = require('./routers/chapter')
 const comic = require('./routers/comic')
 const mongoose = require('mongoose')
-const serverless = require('serverless-http')
 
 const app = express()
 
