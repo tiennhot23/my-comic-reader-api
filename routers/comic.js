@@ -71,8 +71,8 @@ router.get('/search/:query', (req, res,next) => {
             like a% => /^a/
             like %a% = > /a/
         */
-        DetailComics.find({ title: new RegExp(q)}).then((detail_comics) => {
-            res.send(detail_comics)
+        Comics.find({ title: new RegExp(q)}).then((comics) => {
+            res.send(comics)
         }).catch((error) => {
             res.statsu(500).send(error)
         })
