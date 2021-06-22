@@ -7,8 +7,8 @@ const DetailComics = require('../models/DetailComics')
 router.get('/genres/:genre', (req, res,next) => {
     const genre = req.params.genre
     try{
-        DetailComics.find({ 'genre_list.genre_name': `${genre}`}).then((detail_comics) => {
-            res.send(detail_comics)
+        Comics.find({ 'genre_list.genre_endpoint': `${genre}`}).then((comics) => {
+            res.send(comics)
         }).catch((error) => {
             res.statsu(500).send(error)
         })

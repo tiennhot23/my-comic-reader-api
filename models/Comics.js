@@ -10,6 +10,10 @@ const comicSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    status:{
+        type: String,
+        require: true
+    },
     rating: {
         type: String,
         require: true
@@ -18,14 +22,20 @@ const comicSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    endpoint: {
+        type: String,
+        require: true
+    },
     chapter: {
         type: String,
         require: true
     },
-    endpoint: {
-        type: String,
-        require: true
-    }
+    genre_list: [{
+        genre_name: {
+            type: String,
+            require: true
+        }
+    }]
 })
 
 
