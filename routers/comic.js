@@ -3,6 +3,22 @@ const Genres = require('../models/Genres')
 const Comics = require('../models/Comics')
 const DetailComics = require('../models/DetailComics')
 
+router.get('/genres/:genre/:query', (req, res,next) => {
+    const query = req.params.query
+    const q = `${query}`
+    const genre = req.params.genre
+    try{
+        Comics.find({title: new RegExp(q) , 'genre_list.genre_endpoint': `${genre}`}).then((comics) => {
+            res.send(comics)
+        }).catch((error) => {
+            res.statsu(500).send(error)
+        })
+
+    }catch (err){
+        res.json({message: err.message})
+    }
+})
+
 //genres detail
 router.get('/genres/:genre', (req, res,next) => {
     const genre = req.params.genre
