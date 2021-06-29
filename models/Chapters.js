@@ -11,14 +11,8 @@ const chapterSchema = new mongoose.Schema({
         require: true
     },
     chapter_image: [{
-        image_number: {
-            type: Number,
-            require: true
-        },
-        image_link: {
             type: String,
-            require: true
-        }
+            require: true    
     }]
 })
 
