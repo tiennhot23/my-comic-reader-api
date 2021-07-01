@@ -18,4 +18,18 @@ router.get('/:chapter_endpoint', (req, res,next) => {
         res.json({message: err.message})
     }
 })
+router.post('/', (req, res,next) => {
+    const post_data = req.body
+    const array = JSON.parse(JSON.stringify(post_data))
+    try{
+        Chapters.find({'chapter_endpoint': {$in: array}}).then((chapters) => {
+            res.send(chapters)
+        }).catch((error) => {
+            res.status(500).send(error)
+        })
+
+    }catch (err){
+        res.json({message: err.message})
+    }
+})
 module.exports = router

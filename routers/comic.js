@@ -107,6 +107,21 @@ router.get('/', (req, res,next) => {
     })
 })
 
+router.post('/filter_genres', (req, res, next) => {
+    const post_data = req.body
+    const array = JSON.parse(JSON.stringify(post_data))
+    try{
+        Comics.find({'genre_list.genre_name': { $all : array}}).then((comics) => {
+            res.send(comics)
+        }).catch((error) => {
+            res.status(500).send(error)
+        })
+
+    }catch (err){
+        res.json({message: err.message})
+    }
+})
+
 router.post('/', (req, res, next) => {
     const detail_comics = new DetailComics(req.body);
     detail_comics.save().then((detail_comics) => {
