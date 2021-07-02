@@ -20,7 +20,7 @@ router.get('/:chapter_endpoint', (req, res,next) => {
 })
 router.post('/', (req, res,next) => {
     const post_data = req.body
-    const array = JSON.parse(JSON.stringify(post_data))
+    const array = JSON.parse(post_data.data)
     try{
         Chapters.find({'chapter_endpoint': {$in: array}}).then((chapters) => {
             res.send(chapters)

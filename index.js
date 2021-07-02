@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const app = express()
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 mongoose.connect('mongodb+srv://tiennhot23:tiennhot159@cluster.grkvh.mongodb.net/MyComicReaderAPI?retryWrites=true&w=majority', {
     useNewUrlParser: true, 

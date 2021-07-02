@@ -109,7 +109,7 @@ router.get('/', (req, res,next) => {
 
 router.post('/filter_genres', (req, res, next) => {
     const post_data = req.body
-    const array = JSON.parse(JSON.stringify(post_data))
+    const array = JSON.parse(post_data.data)
     try{
         Comics.find({'genre_list.genre_name': { $all : array}}).then((comics) => {
             res.send(comics)
